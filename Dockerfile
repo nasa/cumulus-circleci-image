@@ -30,7 +30,9 @@ RUN sudo touch /home/vsftpd/alireza
 
 # configure SFTP
 COPY sftp/sshd_config /etc/ssh/sshd_config
-COPY sftp/sftp.sh /usr/sbin/
+COPY sftp/sftp.sh /usr/sbin/sftp.sh
 
 # configure apache2 port
 RUN sudo sed -i 's/Listen 80/Listen 3030/g' /etc/apache2/ports.conf
+
+COPY start /usr/bin/start

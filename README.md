@@ -1,5 +1,7 @@
 # Base CircleCI image for testing Cumulus Core
 
+[![CircleCI](https://circleci.com/gh/cumulus-nasa/cumulus-circleci-image.svg?style=svg)](https://circleci.com/gh/cumulus-nasa/cumulus-circleci-image)
+
 ### Local Build
 
      $ docker build . -t cumuluss/circleci:node-6.10

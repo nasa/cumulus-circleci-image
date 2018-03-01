@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build_and_test:
+  build:
     docker:
       - image: docker:17.12.1-ce-rc2-git
     working_directory: ~/project

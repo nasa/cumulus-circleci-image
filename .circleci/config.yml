@@ -14,4 +14,7 @@ jobs:
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker build . -t cumuluss/circleci:node-6.10
-            docker push cumuluss/circleci:node-6.10
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker push cumuluss/circleci:node-6.10
+            fi
+            

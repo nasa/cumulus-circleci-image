@@ -1,0 +1,15 @@
+version: 2
+
+jobs:
+  build_and_test:
+    docker:
+      - image: docker:17.12.1-ce-rc2-git
+    working_directory: ~/project
+    steps:
+      - checkout
+
+      - run:
+          name: Build docker image
+          command: |
+            docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+            docker build . -t cumuluss/circleci:node-6.10

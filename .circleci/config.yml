@@ -7,9 +7,11 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
+      - setup_remote_docker
 
       - run:
           name: Build docker image
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker build . -t cumuluss/circleci:node-6.10
+            docker push cumuluss/circleci:node-6.10

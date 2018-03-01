@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo service vsftpd start || true
+sudo service apache2 start
+sudo bash /usr/sbin/sftp.sh user:password
+
+tail -f /dev/null

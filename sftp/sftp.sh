@@ -183,6 +183,8 @@ if [ -d /etc/sftp.d ]; then
 fi
 
 if $startSshd; then
+    chown root:root /home/$user
+    chmod 755 /home/$user
     log "Executing sshd"
     exec /usr/sbin/sshd -p 2222
 else

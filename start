@@ -6,17 +6,17 @@ if [[ -n "$ON_AWS" ]]; then
 
   # start ftp
   sudo rm -rf /home/vsftpd
-  sudo ln -s /home/circleci/project/packages/test-data /home/vsftpd
+  sudo ln -s /home/circleci/node_modules/@cumulus/test-data /home/vsftpd
   sudo service vsftpd start || true
 
   # start http service
   sudo rm -rf /var/www/html
-  sudo ln -s /home/circleci/project/packages/test-data /var/www/html
+  sudo ln -s /home/circleci/node_modules/@cumulus/test-data /var/www/html
   sudo service apache2 start
 
   # start sftp service
   sudo bash /usr/sbin/sftp.sh user:password
-  sudo cp -r /home/circleci/project/packages/test-data/* /home/user/
+  sudo cp -r /home/circleci/node_modules/@cumulus/test-data/* /home/user/
 else
   sudo service vsftpd start || true
   sudo service apache2 start

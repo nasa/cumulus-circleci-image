@@ -1,4 +1,4 @@
-FROM circleci/node:6.10 
+FROM circleci/node:8.11 
 
 # install FTP server
 RUN sudo apt-get update && \

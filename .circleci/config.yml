@@ -8,13 +8,14 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-
+      - run:
+          name: Build
+          command: docker build . -t cumuluss/circleci:node-8.11
       - run:
           name: Build docker image
           command: |
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker build . -t cumuluss/circleci:node-6.10
+            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker push cumuluss/circleci:node-6.10
+              docker push cumuluss/circleci:node-8.11
             fi
             

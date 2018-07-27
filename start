@@ -1,8 +1,13 @@
 #!/bin/bash
 
 if [[ -n "$ON_AWS" ]]; then
-  cd ~
-  npm install @cumulus/test-data
+
+  if [[ -n "$TEST_DATA_S3_PATH" ]]; then
+    mkdir -p node_modules/@cumulus/test-data/
+    aws s3 cp --recursive $TEST_DATA_S3_PATH node_modules/@cumulus/test-data/ 
+  else
+    npm install @cumulus/test-data
+  fi
 
   # start ftp
   sudo rm -rf /home/vsftpd

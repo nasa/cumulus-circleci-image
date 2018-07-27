@@ -14,6 +14,14 @@ RUN sudo apt-get -y install openssh-server && \
     sudo mkdir -p /var/run/sshd && \
     sudo rm -f /etc/ssh/ssh_host_*key*
 
+# install aws cli
+RUN sudo apt-get update && sudo apt-get install -y python-dev
+WORKDIR /home/circleci
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+RUN unzip awscli-bundle.zip
+RUN sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+RUN rm -rf awscli-bundle awscli-bundle.zip 
+
 # configure FTP
 RUN  sudo mkdir -p /etc/vsftpd
 RUN  echo "testuser\ntestpass" | sudo tee --append /etc/vsftpd/virtual_users.txt

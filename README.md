@@ -8,7 +8,7 @@
 
 ### Local Test
 
-     $ docker run --rm -it -p 20:20 -p 21:21 -p 47400-47470:47400-47470 -p 3030:3030 -p 2222:2222 cumuluss/circleci:8.11 /bin/bash
+     $ docker run --rm -it -p 20:20 -p 21:21 -p 47400-47470:47400-47470 -p 3030:3030 -p 2222:2222 cumuluss/circleci:node-8.11 /bin/bash
 
 ### Provider Server
 
